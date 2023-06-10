@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name" translatable="false">StoryApp</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email" translatable="false">Email</string>
+    <string name="prompt_password" translatable="false">Password</string>
+    <string name="action_sign_in" translatable="false">Sign in / Register</string>
+    <string name="action_sign_in_short" translatable="false">Sign in</string>
+    <string name="welcome">Selamat Datang</string>
+    <string name="invalid_username">Username tidak valid</string>
+    <string name="invalid_password">Password harus > 5 karakter</string>
+    <string name="login_failed">"Login failed"</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="login" translatable="false">Login</string>
+    <string name="gambar_login">Gambar login</string>
+    <string name="masukkan_password">Masukkan Password</string>
+    <string name="don_t_have_an_acount">Tidak punya akun?</string>
+    <string name="sign_up" translatable="false">Sign Up</string>
+    <string name="gambar_signup">Gambar signup</string>
+    <string name="masukkan_nama">Masukkan Nama</string>
+    <string name="already_have_account">Sudah punya akun?</string>
+    <string name="example" translatable="false">example</string>
+    <string name="add_image_button">Button tambah gambar</string>
+    <string name="gambar_story">Gambar Story</string>
+    <string name="tombol_kembali">Tombol Kembali</string>
+    <string name="settings">Pengaturan</string>
+    <string name="logout" translatable="false">Logout</string>
+    <string name="galeri">Galeri</string>
+    <string name="camera">Kamera</string>
+    <string name="unggah">Unggah</string>
+    <string name="button_take_picture">Button ambil gambar</string>
+    <string name="login_berhasil">Login berhasil</string>
+    <string name="email_pass_salah">Email / Password salah</string>
+    <string name="periksa_form">Periksa kembali form!</string>
+    <string name="akun_berhasil_dibuat">Akun berhasil dibuat!</string>
+    <string name="email_digunakan">Email telah digunakan / Tidak valid</string>
+    <string name="berhasil_milih_gambar">Berhasil memilih gambar.</string>
+    <string name="gagal_milih_gambar">Gagal memilih gambar.</string>
+    <string name="upload_berhasil">Upload berhasil</string>
+    <string name="gagal_upload_story">Gagal upload story</string>
+    <string name="silahkan_memilih_gambar">Silahkan mengisi gambar &amp; deskripsi terlebih dahulu.</string>
+    <string name="pilih_gambar">Pilih gambar</string>
+    <string name="gagal_memunculkan_kamera">Gagal memunculkan kamera.</string>
+    <string name="masukkan_email">Masukkan Email</string>
+    <string name="email_tidak_valid">"Email tidak valid"</string>
+    <string name="password_req">Password paling sedikit 8 karakter</string>
+    <string name="toolbar_title">List Story</string>
+    <string name="belum_ada_story">Belum ada story.</string>
+    <string name="logout_berhasil">Logout berhasil</string>
+    <string name="deskripsi">Deskripsi</string>
+    <string name="add_story">Tambah story</string>
+    <string name="bahasa">Bahasa</string>
+</resources>
