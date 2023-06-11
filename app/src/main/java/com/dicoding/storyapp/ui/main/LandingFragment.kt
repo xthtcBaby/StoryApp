@@ -67,8 +67,8 @@ class LandingFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         setToolbar()
-        setupRecyclerView()
         setupViewModel()
+        setupRecyclerView()
     }
 
     override fun onDestroyView() {
@@ -84,11 +84,9 @@ class LandingFragment : Fragment(), View.OnClickListener {
 
     private fun setupViewModel() {
         viewModel.getAllStory()
-
         viewModel.isLoading.observe(viewLifecycleOwner) {
             showLoading(it)
         }
-
         viewModel.listStory.observe(viewLifecycleOwner){
             setStory(it)
         }

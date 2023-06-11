@@ -69,7 +69,7 @@
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.dicoding.storyapp.ui.customView.MyEmailEditText>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <com.dicoding.storyapp.ui.customView.MyPasswordEditText
                 android:id="@+id/tl_pass"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
                     android:inputType="textPassword"
                     android:paddingBottom="16dp"
                     android:singleLine="false" />
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.dicoding.storyapp.ui.customView.MyPasswordEditText>
 
             <Button
                 android:id="@+id/btn_login"

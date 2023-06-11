@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -37,6 +39,8 @@ class AddStoryFragment : Fragment(), View.OnClickListener {
 
     private val args: AddStoryFragmentArgs by navArgs()
 
+    private lateinit var currentPhotoPath: String
+
     private val launcherIntentGallery = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
@@ -50,6 +54,19 @@ class AddStoryFragment : Fragment(), View.OnClickListener {
             }
         } else
             toastMaker(getString(R.string.gagal_milih_gambar))
+    }
+
+    private val launcherIntentCamera = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        if (it.resultCode == AppCompatActivity.RESULT_OK) {
+            val myFile = File(currentPhotoPath)
+
+            myFile.let { file ->
+                getFile = file
+                binding.imgPreview.setImageBitmap(BitmapFactory.decodeFile(file.path))
+            }
+        }
     }
 
     override fun onCreateView(
@@ -113,7 +130,7 @@ class AddStoryFragment : Fragment(), View.OnClickListener {
                 openIntentGaleri()
             }
             R.id.btn_camera -> {
-                openCameraFragment()
+                startTakePhoto()
             }
             R.id.btn_unggah -> {
                 uploadStory()
@@ -124,7 +141,7 @@ class AddStoryFragment : Fragment(), View.OnClickListener {
     private fun uploadStory() {
         val description = binding.etDeskripsi.text.toString()
         if (getFile != null && !description.isEmpty()) {
-            val file = getFile
+            val file = reduceFileImage(getFile as File)
             val requestImageFile = file?.asRequestBody("image/jpeg".toMediaType())
             val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
                 "photo",
@@ -156,9 +173,25 @@ class AddStoryFragment : Fragment(), View.OnClickListener {
             getFile = file
             file?.let { file ->
                 rotateFile(file, isBackCamera)
-                binding.imgPreview.setImageBitmap(BitmapFactory.decodeFile(file.path))
+                binding.imgPreview.setImageBitmap(BitmapFactory.decodeFile(file?.path))
             }
             toastMaker(getString(R.string.berhasil_milih_gambar))
+        }
+    }
+
+    private fun startTakePhoto() {
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        intent.resolveActivity(requireActivity().packageManager)
+
+        createTempFile(requireActivity().application).also {
+            val photoURI: Uri = FileProvider.getUriForFile(
+                requireContext(),
+                "com.dicoding.storyapp",
+                it
+            )
+            currentPhotoPath = it.absolutePath
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+            launcherIntentCamera.launch(intent)
         }
     }
 
